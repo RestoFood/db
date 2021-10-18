@@ -2,7 +2,7 @@
 
 --pass
 create table menu_type(
-	mety_name varchar(55), --dessert, main menu
+	mety_name varchar(55), --appetizer, main course, dessert
 	constraint mety_name_pk primary key (mety_name)
 );
 
