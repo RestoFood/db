@@ -119,7 +119,7 @@ $$ language sql;
 
 
 create table cart_line_items(
-	clit_id serial primary key,
+	clit_id serial,
 	clit_reme_id integer,
 	clit_redon_id integer,
 	clit_qty integer,
@@ -127,10 +127,11 @@ create table cart_line_items(
 	clit_subtotal numeric(15,2),
 	clit_order_name varchar(30),
 	clit_cart_id integer,
-	constraint clit_reme_id_pk foreign key (clit_reme_id) references resto_menu(reme_id) on update cascade on delete cascade,
-	constraint clit_redon_id_pk foreign key (clit_redon_id) references resto_addon(redon_id) on update cascade on delete cascade,
-	constraint clit_order_name_pk foreign key (clit_order_name) references order_menu(order_name) on update cascade on delete cascade,
-	constraint clit_cart_id_pk foreign key (clit_cart_id) references carts(cart_id) on update cascade on delete cascade,
+	constraint clit_id_pk primary key (clit_id),
+	constraint clit_reme_id_fk foreign key (clit_reme_id) references resto_menu(reme_id) on update cascade on delete cascade,
+	constraint clit_redon_id_fk foreign key (clit_redon_id) references resto_addon(redon_id) on update cascade on delete cascade,
+	constraint clit_order_name_fk foreign key (clit_order_name) references order_menu(order_name) on update cascade on delete cascade,
+	constraint clit_cart_id_fk foreign key (clit_cart_id) references carts(cart_id) on update cascade on delete cascade,
 );
 
 create table order_menu(
